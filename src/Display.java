@@ -1,6 +1,4 @@
-import figuren.Figur;
-import figuren.Linie;
-import figuren.Rechteck;
+import figuren.*;
 
 import java.awt.*;
 import java.util.ArrayList;
@@ -78,10 +76,10 @@ public class Display extends JFrame {
         Kreis k = (Kreis)f;
         if(k.istGefuellt()){
           g2d.setColor(k.getFuellung());
-          g2d.fillOval(k.getPosX(), k.getPosY(), k.getRadius(), k.getRadius());
+          g2d.fillOval(k.getPosX(), k.getPosY(), k.getRadius()*2, k.getRadius()*2);
         }
         g2d.setColor(k.getLinienFarbe());
-        g2d.drawOval(k.getPosX(), k.getPosY(), k.getRadius(), k.getRadius());
+        g2d.drawOval(k.getPosX(), k.getPosY(), k.getRadius()*2, k.getRadius()*2);
       }
 
       // Linie
@@ -92,13 +90,29 @@ public class Display extends JFrame {
       }
 
       // Text
-
+      if(f instanceof Text){
+        Text t = (Text)f;
+        g2d.setColor(t.getLinienFarbe());
+        g2d.drawString(t.getText(), t.getPosX(), t.getPosY());
+      }
 
       // Bogen
-
+      if(f instanceof Bogen){
+        Bogen b = (Bogen)f;
+        g2d.setColor(b.getLinienFarbe());
+        g2d.drawArc(b.getPosX(), b.getPosY(), b.getBreite(), b.getHoehe(), b.getStartWinkel(), b.getBogenWinkel());
+      }
 
       // Ellipse
-
+      if(f instanceof Ellipse){
+        Ellipse e = (Ellipse)f;
+        if(e.istGefuellt()){
+          g2d.setColor(e.getFuellung());
+          g2d.fillOval(e.getPosX(), e.getPosY(), e.getRadiusBreite()*2, e.getRadiusHoehe()*2);
+        }
+        g2d.setColor(e.getLinienFarbe());
+        g2d.drawOval(e.getPosX(), e.getPosY(), e.getRadiusBreite()*2, e.getRadiusHoehe()*2);
+      }
     }
   }
 

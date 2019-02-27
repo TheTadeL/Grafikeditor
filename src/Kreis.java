@@ -42,4 +42,12 @@ public class Kreis extends Figur implements IFuellbar {
     public void setRadius(int radius) {
         this.radius = radius;
     }
+    @Override
+    public int getPosX() {
+        return super.getPosX() - radius;
+    }
+    @Override
+    public int getPosY() {
+        return super.getPosY() - radius;
+    }
 }
