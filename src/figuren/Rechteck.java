@@ -22,8 +22,13 @@ public class Rechteck extends Figur implements IFuellbar {
     }
 
     @Override
-    public void zeichne(Graphics g) {
-
+    public void zeichne(Graphics2D g) {
+        if(istGefuellt) {
+            g.setColor(fuellung);
+            g.fillRect(posX, posY, breite, hoehe);
+        }
+        g.setColor(linienFarbe);
+        g.drawRect(posX, posY, breite, hoehe);
     }
 
     public int getBreite() {

@@ -9,13 +9,13 @@ public class Ellipse extends Figur implements IFuellbar {
     private int radiusBreite;
 
     public Ellipse(int posX, int posY, int radiusBreite, int radiusHoehe){
-        super(posX, posY, null);
+        super(posX-radiusBreite, posY-radiusHoehe, null);
         this.radiusBreite = radiusBreite;
         this.radiusHoehe = radiusHoehe;
     }
 
     public Ellipse(int posX, int posY, int radiusBreite, int radiusHoehe, Color linienFarbe){
-        super(posX, posY, linienFarbe);
+        super(posX-radiusBreite, posY-radiusHoehe, linienFarbe);
         this.radiusBreite = radiusBreite;
         this.radiusHoehe = radiusHoehe;
     }
@@ -26,9 +26,15 @@ public class Ellipse extends Figur implements IFuellbar {
         this.fuellung = fuellung != null ? fuellung : IFuellbar.STANDARD_FUELLUNG;
     }
 
+    @SuppressWarnings("Duplicates")
     @Override
-    public void zeichne(Graphics g) {
-
+    public void zeichne(Graphics2D g) {
+        if(istGefuellt){
+            g.setColor(fuellung);
+            g.fillOval(posX, posY, radiusBreite*2, radiusHoehe*2);
+        }
+        g.setColor(linienFarbe);
+        g.drawOval(posX, posY, radiusBreite*2, radiusHoehe*2);
     }
 
     @Override

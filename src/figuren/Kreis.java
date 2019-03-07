@@ -11,18 +11,24 @@ public class Kreis extends Figur implements IFuellbar {
     private int radius;
 
     public Kreis(int posX, int posY, int radius){
-        super(posX, posY, null);
+        super(posX - radius, posY - radius, null);
         this.radius = radius;
     }
 
     public Kreis(int posX, int posY, int radius, Color linienFarbe){
-        super(posX, posY, linienFarbe);
+        super(posX - radius, posY - radius, linienFarbe);
         this.radius = radius;
     }
 
+    @SuppressWarnings("Duplicates")
     @Override
-    public void zeichne(Graphics g) {
-
+    public void zeichne(Graphics2D g) {
+        if(istGefuellt){
+            g.setColor(fuellung);
+            g.fillOval(posX, posY, radius*2, radius*2);
+        }
+        g.setColor(linienFarbe);
+        g.drawOval(posX, posY, radius*2, radius*2);
     }
 
     @Override

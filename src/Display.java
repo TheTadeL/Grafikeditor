@@ -17,7 +17,7 @@ import javax.swing.JPanel;
 @SuppressWarnings("serial")
 public class Display extends JFrame {
   /** Die Liste der dargestellten Figur-Objekte */
-  private List<Figur> figuren = new ArrayList<Figur>();
+  private Zeichnung zeichnung;
 
   /**
    * Konstruktor. Initialisiert das Fenster in der Mitte des Bildschirms und erzeugt ein
@@ -45,91 +45,18 @@ public class Display extends JFrame {
       @Override
       protected void paintComponent(Graphics g) {
         super.paintComponent(g);
-        zeichneFiguren(g);
+        zeichnung.zeichneFiguren(g);
       }
     });
   }
 
-  /**
-   * Zeichnet alle figuren.
-   * @param g Referenz auf das Graphics-Objekt zum zeichnen.
-   */
-  private void zeichneFiguren(Graphics g) {
-    Graphics2D g2d = (Graphics2D)g;
-    for (Figur f : figuren) {
-      // Farbe zurücksetzen
-      g2d.setColor(Figur.STANDARD_LINIENFARBE);
+//  public void zeichneFiguren(Graphics g){
+//    this.zeichnung.zeichneFiguren(g);
+//    repaint();
+//  }
 
-      // Rechteck
-      if (f instanceof Rechteck) {
-        Rechteck r = (Rechteck)f;
-        if(r.istGefuellt()) {
-          g2d.setColor(r.getFuellung());
-          g2d.fillRect(r.getPosX(), r.getPosY(), r.getBreite(), r.getHoehe());
-        }
-        g2d.setColor(r.getLinienFarbe());
-        g2d.drawRect(r.getPosX(), r.getPosY(), r.getBreite(), r.getHoehe());
-      }
-
-      // figuren.Kreis
-      if(f instanceof Kreis){
-        Kreis k = (Kreis)f;
-        if(k.istGefuellt()){
-          g2d.setColor(k.getFuellung());
-          g2d.fillOval(k.getPosX(), k.getPosY(), k.getRadius()*2, k.getRadius()*2);
-        }
-        g2d.setColor(k.getLinienFarbe());
-        g2d.drawOval(k.getPosX(), k.getPosY(), k.getRadius()*2, k.getRadius()*2);
-      }
-
-      // Linie
-      if(f instanceof Linie){
-        Linie l = (Linie)f;
-        g2d.setColor(l.getLinienFarbe());
-        g2d.drawLine(l.getPosX(), l.getPosY(), l.getEndPosX(), l.getEndPosY());
-      }
-
-      // Text
-      if(f instanceof Text){
-        Text t = (Text)f;
-        g2d.setColor(t.getLinienFarbe());
-        g2d.drawString(t.getText(), t.getPosX(), t.getPosY());
-      }
-
-      // Bogen
-      if(f instanceof Bogen){
-        Bogen b = (Bogen)f;
-        g2d.setColor(b.getLinienFarbe());
-        g2d.drawArc(b.getPosX(), b.getPosY(), b.getBreite(), b.getHoehe(), b.getStartWinkel(), b.getBogenWinkel());
-      }
-
-      // Ellipse
-      if(f instanceof Ellipse){
-        Ellipse e = (Ellipse)f;
-        if(e.istGefuellt()){
-          g2d.setColor(e.getFuellung());
-          g2d.fillOval(e.getPosX(), e.getPosY(), e.getRadiusBreite()*2, e.getRadiusHoehe()*2);
-        }
-        g2d.setColor(e.getLinienFarbe());
-        g2d.drawOval(e.getPosX(), e.getPosY(), e.getRadiusBreite()*2, e.getRadiusHoehe()*2);
-      }
-    }
-  }
-
-  /**
-   * F�gt eine weitere Figur hinzu und l�st die Auffrischung des Fensterinhaltes aus.
-   * @param figur Referenz auf das weitere Figur-Objekt.
-   */
-  public void hinzufuegen(Figur figur) {
-    figuren.add(figur);
-    repaint();
-  }
-
-  /**
-   * L�scht alle figuren und l�st die Auffrischung des Fensterinhaltes aus.
-   */
-  public void allesLoeschen() {
-    figuren.clear();
+  public void setZeichnung(Zeichnung zeichnung){
+    this.zeichnung = zeichnung;
     repaint();
   }
 }

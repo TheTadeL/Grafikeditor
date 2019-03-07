@@ -16,8 +16,9 @@ public class Text extends Figur {
     }
 
     @Override
-    public void zeichne(Graphics g) {
-
+    public void zeichne(Graphics2D g) {
+        g.setColor(linienFarbe);
+        g.drawString(text, posX, posY);
     }
 
     public String getText() {

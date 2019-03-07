@@ -16,7 +16,7 @@ public abstract class Figur {
         this.linienFarbe = linienFarbe != null ? linienFarbe : STANDARD_LINIENFARBE;
     }
 
-    public abstract void zeichne(Graphics g);
+    public abstract void zeichne(Graphics2D g);
 
     public int getPosX() {
         return posX;

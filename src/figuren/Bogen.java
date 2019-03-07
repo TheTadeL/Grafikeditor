@@ -25,8 +25,9 @@ public class Bogen extends Figur {
     }
 
     @Override
-    public void zeichne(Graphics g) {
-
+    public void zeichne(Graphics2D g) {
+        g.setColor(linienFarbe);
+        g.drawArc(posX, posY, breite, hoehe, startWinkel, bogenWinkel);
     }
 
     public int getBreite() {

@@ -19,8 +19,9 @@ public class Linie extends Figur {
     }
 
     @Override
-    public void zeichne(Graphics g) {
-
+    public void zeichne(Graphics2D g) {
+        g.setColor(linienFarbe);
+        g.drawLine(posX, posY, endPosX, endPosY);
     }
 
     public int getEndPosX() {
