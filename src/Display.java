@@ -71,7 +71,7 @@ public class Display extends JFrame {
         g2d.drawRect(r.getPosX(), r.getPosY(), r.getBreite(), r.getHoehe());
       }
 
-      // Kreis
+      // figuren.Kreis
       if(f instanceof Kreis){
         Kreis k = (Kreis)f;
         if(k.istGefuellt()){

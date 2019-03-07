@@ -1,3 +1,5 @@
+package figuren;
+
 import figuren.Figur;
 import figuren.IFuellbar;
 
@@ -18,6 +20,10 @@ public class Kreis extends Figur implements IFuellbar {
         this.radius = radius;
     }
 
+    @Override
+    public void zeichne(Graphics g) {
+
+    }
 
     @Override
     public void setFuellung(Color fuellung) {

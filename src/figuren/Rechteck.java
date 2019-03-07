@@ -21,6 +21,11 @@ public class Rechteck extends Figur implements IFuellbar {
         this.hoehe = hoehe;
     }
 
+    @Override
+    public void zeichne(Graphics g) {
+
+    }
+
     public int getBreite() {
         return breite;
     }

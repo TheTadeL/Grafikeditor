@@ -3,7 +3,7 @@ import figuren.*;
 import java.awt.*;
 
 public class Main {
-    //Todo: SAM sagen dass Radius noch *2 gerrechnet werden muss. ++ getPos vom Kreis!!!
+    //Todo: SAM sagen dass Radius noch *2 gerrechnet werden muss. ++ getPos vom figuren.Kreis!!!
     private static Display mainDisplay = new Display();
 
     public static void main(String[] args) {

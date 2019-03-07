@@ -4,7 +4,7 @@ import com.sun.istack.internal.Nullable;
 
 import java.awt.*;
 
-public class Figur {
+public abstract class Figur {
     public static final Color STANDARD_LINIENFARBE = Color.BLACK;
     protected int posX;
     protected int posY;
@@ -15,6 +15,8 @@ public class Figur {
         this.posY = posY;
         this.linienFarbe = linienFarbe != null ? linienFarbe : STANDARD_LINIENFARBE;
     }
+
+    public abstract void zeichne(Graphics g);
 
     public int getPosX() {
         return posX;

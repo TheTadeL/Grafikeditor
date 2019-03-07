@@ -15,6 +15,11 @@ public class Text extends Figur {
         this.text = text;
     }
 
+    @Override
+    public void zeichne(Graphics g) {
+
+    }
+
     public String getText() {
         return text;
     }

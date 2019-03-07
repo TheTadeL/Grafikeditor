@@ -18,6 +18,11 @@ public class Linie extends Figur {
         this.endPosY = endPosY;
     }
 
+    @Override
+    public void zeichne(Graphics g) {
+
+    }
+
     public int getEndPosX() {
         return endPosX;
     }

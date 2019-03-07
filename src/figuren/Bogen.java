@@ -24,6 +24,11 @@ public class Bogen extends Figur {
         this.bogenWinkel = bogenWinkel;
     }
 
+    @Override
+    public void zeichne(Graphics g) {
+
+    }
+
     public int getBreite() {
         return breite;
     }

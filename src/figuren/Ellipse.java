@@ -25,6 +25,12 @@ public class Ellipse extends Figur implements IFuellbar {
         this.istGefuellt = fuellung != null;
         this.fuellung = fuellung != null ? fuellung : IFuellbar.STANDARD_FUELLUNG;
     }
+
+    @Override
+    public void zeichne(Graphics g) {
+
+    }
+
     @Override
     public Color getFuellung() {
         return fuellung;
