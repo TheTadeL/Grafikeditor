@@ -2,51 +2,68 @@ package figuren;
 
 import java.awt.*;
 
-public class Ellipse extends Figur implements IFuellbar {
+//Todo: Farben speichern können
+public class Oval extends Figure implements IFillable {
     private Color fuellung;
     private boolean istGefuellt;
     private int radiusHoehe;
     private int radiusBreite;
 
-    public Ellipse(int posX, int posY, int radiusBreite, int radiusHoehe){
-        super(posX-radiusBreite, posY-radiusHoehe, null);
+    public Oval(int posX, int posY, int radiusBreite, int radiusHoehe){
+        super(posX, posY, null);
         this.radiusBreite = radiusBreite;
         this.radiusHoehe = radiusHoehe;
     }
 
-    public Ellipse(int posX, int posY, int radiusBreite, int radiusHoehe, Color linienFarbe){
-        super(posX-radiusBreite, posY-radiusHoehe, linienFarbe);
+    public Oval(int posX, int posY, int radiusBreite, int radiusHoehe, Color linienFarbe){
+        super(posX, posY, linienFarbe);
         this.radiusBreite = radiusBreite;
         this.radiusHoehe = radiusHoehe;
     }
 
     @Override
-    public void setFuellung(Color fuellung) {
-        this.istGefuellt = fuellung != null;
-        this.fuellung = fuellung != null ? fuellung : IFuellbar.STANDARD_FUELLUNG;
+    public void setFillColor(Color fillColor) {
+        this.istGefuellt = fillColor != null;
+        this.fuellung = fillColor != null ? fillColor : IFillable.DEFAULT_FILL_COLOR;
+    }
+
+    @Override
+    public String serialize() {
+        return String.format("Oval;%d;%d;%d;%d", posX, posY, radiusBreite, radiusHoehe);
+    }
+
+    @Override
+    public Figure deSerialize(String figureData) {
+        String[] data = figureData.split(";");
+        return new Oval(Integer.valueOf(data[1]), Integer.valueOf(data[2]), Integer.valueOf(data[3]), Integer.valueOf(data[4]));
+    }
+
+    @Override
+    public boolean isFigureOfPrefix(String prefix) {
+        return prefix.equals("Oval");
     }
 
     @SuppressWarnings("Duplicates")
     @Override
-    public void zeichne(Graphics2D g) {
+    public void draw(Graphics2D g) {
         if(istGefuellt){
             g.setColor(fuellung);
             g.fillOval(posX, posY, radiusBreite*2, radiusHoehe*2);
         }
-        g.setColor(linienFarbe);
+        g.setColor(lineColor);
         g.drawOval(posX, posY, radiusBreite*2, radiusHoehe*2);
     }
 
     @Override
-    public Color getFuellung() {
+    public Color getFillColor() {
         return fuellung;
     }
     @Override
-    public void setIstGefuellt(boolean istGefuellt) {
-        this.istGefuellt = istGefuellt;
+    public void setFilled(boolean filled) {
+        this.istGefuellt = filled;
     }
     @Override
-    public boolean istGefuellt() {
+    public boolean isFilled() {
         return istGefuellt;
     }
     @Override

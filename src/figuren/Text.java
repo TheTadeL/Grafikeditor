@@ -2,7 +2,7 @@ package figuren;
 
 import java.awt.*;
 
-public class Text extends Figur {
+public class Text extends Figure {
     private String text;
 
     public Text(int posX, int posY, String text){
@@ -16,8 +16,24 @@ public class Text extends Figur {
     }
 
     @Override
-    public void zeichne(Graphics2D g) {
-        g.setColor(linienFarbe);
+    public String serialize() {
+        return String.format("Text;%d;%d;%s", posX, posY, text);
+    }
+
+    @Override
+    public Figure deSerialize(String figureData) {
+        String[] data = figureData.split(";");
+        return new Text(Integer.valueOf(data[1]), Integer.valueOf(data[2]), data[3]);
+    }
+
+    @Override
+    public boolean isFigureOfPrefix(String prefix) {
+        return prefix.equals("Text");
+    }
+
+    @Override
+    public void draw(Graphics2D g) {
+        g.setColor(lineColor);
         g.drawString(text, posX, posY);
     }
 
