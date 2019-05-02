@@ -18,6 +18,7 @@ public abstract class Figure {
     public void move(int dx, int dy){
         posX += dx;
         posY += dy;
+
     }
 
     public abstract String serialize();

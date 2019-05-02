@@ -46,19 +46,17 @@ public class Main {
 //        e1.setFillColor(Color.RED);
 //        figures.add(e1);
 //
-//        Drawing drawing = new Drawing(figures);
-//        drawing.save();
-//
-//        //Oval
-//        Oval e2 = new Oval(400, 350, 25, 50);
-//        e2.setFillColor(Color.GREEN);
-//        drawing.add(e2);
-//        drawing.save();
-//
+        Drawing drawing = new Drawing(figures);
+
+        Smiley smiley = new Smiley(100, 100, 400, 400);
+        drawing.add(smiley);
+        drawing.save();
+
+        mainDisplay.setDrawing(drawing);
+
+//        FigureLoader figureLoader = new FigureLoader("./figures.txt");
+//        Drawing drawing = new Drawing(figureLoader.load());
 //        mainDisplay.setDrawing(drawing);
 
-        FigureLoader figureLoader = new FigureLoader("./figures.txt");
-        Drawing drawing = new Drawing(figureLoader.load());
-        mainDisplay.setDrawing(drawing);
     }
 }
