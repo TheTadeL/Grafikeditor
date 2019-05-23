@@ -7,14 +7,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Main {
-    private static Display mainDisplay = new Display();
-    private static MainWindow mainWindow = new MainWindow();
-    private static Toolbox toolBox = new Toolbox();
+    private static EditorFrame mainDisplay = new EditorFrame(800, 800);
 
     public static void main(String[] args) {
-        mainWindow.add(toolBox, BorderLayout.NORTH);
-        mainWindow.add(mainDisplay, BorderLayout.CENTER);
-        mainWindow.pack();
+//        mainWindow.add(toolBox, BorderLayout.NORTH);
+//        mainWindow.add(mainDisplay, BorderLayout.CENTER);
+//        mainWindow.pack();
 
         List<Figure> figures = new ArrayList<Figure>();
 //        //Rechtecke
@@ -51,8 +49,7 @@ public class Main {
         Smiley smiley = new Smiley(100, 100, 400, 400);
         drawing.add(smiley);
         drawing.save();
-
-        mainDisplay.setDrawing(drawing);
+        //mainDisplay.setDrawing(drawing);
 
 //        FigureLoader figureLoader = new FigureLoader("./figures.txt");
 //        Drawing drawing = new Drawing(figureLoader.load());
