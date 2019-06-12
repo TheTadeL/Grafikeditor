@@ -48,10 +48,14 @@ public class Oval extends Figure implements IFillable {
     public void draw(Graphics2D g) {
         if(istGefuellt){
             g.setColor(fuellung);
-            g.fillOval(posX, posY, radiusBreite*2, radiusHoehe*2);
+            g.fillOval(posX, posY, radiusBreite, radiusHoehe);
         }
         g.setColor(lineColor);
-        g.drawOval(posX, posY, radiusBreite*2, radiusHoehe*2);
+        g.drawOval(posX - radiusBreite, posY - radiusHoehe, radiusBreite*2, radiusHoehe*2);
+        // Radius zeichnen
+        g.setColor(Color.RED);
+        g.drawLine(posX, posY, posX+radiusBreite, posY);
+        //
     }
 
     @Override
@@ -65,14 +69,6 @@ public class Oval extends Figure implements IFillable {
     @Override
     public boolean isFilled() {
         return istGefuellt;
-    }
-    @Override
-    public int getPosX() {
-        return super.getPosX() - radiusBreite;
-    }
-    @Override
-    public int getPosY() {
-        return super.getPosY() - radiusHoehe;
     }
     public int getRadiusHoehe() {
         return radiusHoehe;

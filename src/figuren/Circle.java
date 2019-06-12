@@ -38,10 +38,14 @@ public class Circle extends Figure implements IFillable {
     public void draw(Graphics2D g) {
         if(isFilled){
             g.setColor(fillColor);
-            g.fillOval(posX, posY, radius*2, radius*2);
+            g.fillOval(posX, posY, radius, radius);
         }
         g.setColor(lineColor);
-        g.drawOval(posX, posY, radius*2, radius*2);
+        g.drawOval(posX - radius, posY - radius, radius * 2, radius * 2);
+        // Radius zeichnen
+        g.setColor(Color.GREEN);
+        g.drawLine(posX, posY, posX+radius, posY);
+        //
     }
 
     @Override
@@ -66,13 +70,5 @@ public class Circle extends Figure implements IFillable {
     }
     public void setRadius(int radius) {
         this.radius = radius;
-    }
-    @Override
-    public int getPosX() {
-        return super.getPosX() - radius;
-    }
-    @Override
-    public int getPosY() {
-        return super.getPosY() - radius;
     }
 }

@@ -39,19 +39,21 @@ final class EditorControl {
         );
         break;
       case 'c':
+        int radius = Math.max(Math.abs(secondPoint.x - firstPoint.x), Math.abs(secondPoint.y - firstPoint.y))/2;
         f = new Circle(
-                Math.min(firstPoint.x, secondPoint.x),
-                Math.min(firstPoint.y, secondPoint.y),
-                Math.max(Math.abs(secondPoint.x - firstPoint.x), Math.abs(secondPoint.y - firstPoint.y))/2
+                Math.min(firstPoint.x, secondPoint.x) + radius,
+                Math.min(firstPoint.y, secondPoint.y) + radius,
+                radius
         );
         break;
       case 'o':
+        int radiusWidth = Math.abs(secondPoint.x - firstPoint.x)/2;
+        int radiusHeight = Math.abs(secondPoint.y - firstPoint.y)/2;
         f = new Oval(
-                Math.min(firstPoint.x, secondPoint.x),
-                Math.min(firstPoint.y, secondPoint.y),
-                Math.abs(secondPoint.x - firstPoint.x)/2,
-                Math.abs(secondPoint.y - firstPoint.y)/2
-        );
+                Math.min(firstPoint.x, secondPoint.x) + radiusWidth,
+                Math.min(firstPoint.y, secondPoint.y) + radiusHeight,
+                radiusWidth,
+                radiusHeight);
         break;
       case 'l':
         f = new Line(firstPoint.x, firstPoint.y, secondPoint.x, secondPoint.y);
